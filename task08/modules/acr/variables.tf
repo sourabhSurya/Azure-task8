@@ -19,12 +19,12 @@ variable "image_name" {
   description = "Name of the container image to be pushed to ACR"
 }
 variable "git_pat" {
-  type      = string
-  sensitive = true
+  type        = string
+  sensitive   = true
   description = "Git path contain the sensitive path of registry"
 }
 variable "tags" {
-  type = map(string)
+  type        = map(string)
   description = "Tags for the resources"
 }
 

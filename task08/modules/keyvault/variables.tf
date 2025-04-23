@@ -14,11 +14,11 @@ variable "resource_group_name" {
 }
 
 variable "tags" {
-  type = map(string)
+  type        = map(string)
   description = "Tags for the resources"
 }
 variable "redis_connection_string" {
-  type      = string
-  sensitive = true
+  type        = string
+  sensitive   = true
   description = "Redis connection path is sensitive"
 }
