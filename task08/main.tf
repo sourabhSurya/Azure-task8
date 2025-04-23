@@ -12,10 +12,10 @@ locals {
 
 # Resource Group
 module "resource_group" {
-  source = "./modules/resource_group"
-  name   = "rg-container-app"
+  source   = "./modules/resource_group"
+  name     = "rg-container-app"
   location = local.location
-  tags   = local.tags
+  tags     = local.tags
 }
 
 # Azure Key Vault
@@ -30,7 +30,7 @@ module "key_vault" {
 # Azure Redis
 module "redis" {
   source              = "./modules/redis"
-  redis_name          = "rediscontainerappdemo"  # Specify the Redis instance name
+  redis_name          = "rediscontainerappdemo" # Specify the Redis instance name
   resource_group_name = module.resource_group.name
   location            = local.location
   tags                = local.tags
@@ -39,14 +39,14 @@ module "redis" {
 
 module "acr" {
   source              = "./modules/acr"
-  acr_name            = "acrcontainerdemo"    # This was previously missing
-  sku                 = "Basic"                # Add SKU value (can be "Basic", "Standard", or "Premium")
-  git_pat             = var.git_pat            # Add your GitHub Personal Access Token (PAT) here
-  image_name          = "myapp"                # Specify your Docker image name here
+  acr_name            = "acrcontainerdemo" # This was previously missing
+  sku                 = "Basic"            # Add SKU value (can be "Basic", "Standard", or "Premium")
+  git_pat             = var.git_pat        # Add your GitHub Personal Access Token (PAT) here
+  image_name          = "myapp"            # Specify your Docker image name here
   resource_group_name = module.resource_group.name
   location            = local.location
-#   admin_enabled       = true
-  tags                = local.tags
+  #   admin_enabled       = true
+  tags = local.tags
 }
 
 
@@ -82,7 +82,7 @@ resource "random_id" "dns" {
 }
 
 resource "local_file" "deployment_yaml" {
-  content  = templatefile("${path.module}/k8s-manifests/deployment.yaml.tftpl", {
+  content = templatefile("${path.module}/k8s-manifests/deployment.yaml.tftpl", {
     image_name = "${azurerm_container_registry.acr.login_server}/myapp:latest"
     redis_host = module.redis.hostname
   })
@@ -96,7 +96,7 @@ resource "local_file" "service_yaml" {
 
 # Only if using Key Vault
 resource "local_file" "secret_provider_yaml" {
-  content  = templatefile("${path.module}/k8s-manifests/secret-provider.yaml.tftpl", {
+  content = templatefile("${path.module}/k8s-manifests/secret-provider.yaml.tftpl", {
     key_vault_name = module.keyvault.name,
     tenant_id      = data.azurerm_client_config.current.tenant_id
   })

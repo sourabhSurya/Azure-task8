@@ -5,8 +5,8 @@ variable "name_prefix" {
 }
 
 variable "location" {
-  type        = string
-  default     = "eastus"
+  type    = string
+  default = "eastus"
 }
 
 variable "tags" {
@@ -17,8 +17,8 @@ variable "tags" {
 }
 
 variable "git_pat" {
-  type      = string
-  sensitive = true
+  type        = string
+  sensitive   = true
   description = "Git Personal Access Token for ACR task"
 }
 
