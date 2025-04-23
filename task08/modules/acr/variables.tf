@@ -21,8 +21,10 @@ variable "image_name" {
 variable "git_pat" {
   type      = string
   sensitive = true
+  description = "Git path contain the sensitive path of registry"
 }
 variable "tags" {
   type = map(string)
+  description = "Tags for the resources"
 }
 

@@ -13,7 +13,7 @@ locals {
 
 # Azure Key Vault
 resource "keyvault" "example" {
-  source              = "./modules/key_vault"
+  source              = "./modules/keyvault"
   name                = local.kv_name
   location            = local.location
   resource_group_name = var.resource_group_name
