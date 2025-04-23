@@ -12,12 +12,15 @@ locals {
 
 
 # Azure Key Vault
-resource "keyvault" "example" {
-  source              = "./modules/keyvault"
-  name                = local.kv_name
-  location            = local.location
-  resource_group_name = var.resource_group_name
-  tags                = local.tags
+module "keyvault" {
+  source                  = "./modules/keyvault"
+  kv_name                 = local.kv_name
+  location                = local.location
+  resource_group_name     = var.resource_group_name
+  tags                    = local.tags
+  redis_hostname          = var.redis_hostname
+  redis_primary_key       = var.redis_primary_key
+  redis_connection_string = var.redis_connection_string
 }
 
 

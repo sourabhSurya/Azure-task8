@@ -38,3 +38,23 @@ variable "vm_size" {
   description = "Size of the VM for AKS cluster nodes"
   type        = string
 }
+
+variable "redis_connection_string" {
+  description = "The connection string for the Azure Redis instance"
+  type        = string
+  sensitive   = true
+}
+variable "resource_group_name" {
+  description = "Name of the resource group where resources will be deployed"
+  type        = string
+}
+variable "redis_hostname" {
+  description = "The hostname of the Azure Redis Cache"
+  type        = string
+  sensitive   = true
+}
+variable "redis_primary_key" {
+  description = "The primary access key for the Azure Redis Cache"
+  type        = string
+  sensitive   = true
+}
