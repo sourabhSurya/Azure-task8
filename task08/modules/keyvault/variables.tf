@@ -22,3 +22,15 @@ variable "redis_connection_string" {
   sensitive   = true
   description = "Redis connection path is sensitive"
 }
+variable "redis_hostname" {
+  type        = string
+  sensitive   = true
+  description = "The hostname of the Redis instance"
+}
+
+variable "redis_primary_key" {
+  type        = string
+  sensitive   = true
+  description = "The primary key for the Redis instance"
+}
+

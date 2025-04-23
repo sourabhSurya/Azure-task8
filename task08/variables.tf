@@ -5,14 +5,16 @@ variable "name_prefix" {
 }
 
 variable "location" {
-  type    = string
-  default = "eastus"
+  type        = string
+  default     = "eastus"
+  description = "The Azure region where the resource will be deployed"
 }
 
 variable "tags" {
   type = map(string)
   default = {
-    Creator = "sourabh_suryawanshi@epam.com"
+    Creator     = "sourabh_suryawanshi@epam.com"
+    description = "Tags for the resources"
   }
 }
 
