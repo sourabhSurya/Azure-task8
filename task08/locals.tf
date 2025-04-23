@@ -6,4 +6,5 @@ locals {
   kv_name        = "${var.name_prefix}-kv"
   redis_name     = "${var.name_prefix}-redis"
   app_image_name = "${var.name_prefix}-app"
+  keyvault_name  = "${var.name_prefix}-kv"
 }
