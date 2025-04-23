@@ -1,4 +1,5 @@
-location = "Central US"
+location    = "Central US"
+name_prefix = "cmtr-dfc0edb2-mod8"
 
 tags = {
   environment = "dev"

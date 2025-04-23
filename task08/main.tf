@@ -10,22 +10,16 @@ locals {
   }
 }
 
-# Resource Group
-module "resource_group" {
-  source   = "./modules/resource_group"
-  name     = "rg-container-app"
-  location = local.location
-  tags     = local.tags
-}
 
 # Azure Key Vault
-module "key_vault" {
+resource "keyvault" "example" {
   source              = "./modules/key_vault"
-  name                = "kvcontainerappdemo"
-  resource_group_name = module.resource_group.name
+  name                = local.kv_name
   location            = local.location
+  resource_group_name = var.resource_group_name
   tags                = local.tags
 }
+
 
 # Azure Redis
 module "redis" {
